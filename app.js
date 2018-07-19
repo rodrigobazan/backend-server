@@ -16,6 +16,11 @@ app.use(bodyParser.json());
 //Importar rutas
 var appRoutes = require('./routes/app');
 var usuarioRoutes = require('./routes/usuario');
+var hospitalRoutes = require('./routes/hospital');
+var medicoRoutes = require('./routes/medico');
+var busquedaRoutes = require('./routes/busqueda');
+var uploadRoutes = require('./routes/upload');
+var imagenesdRoutes = require('./routes/imagenes');
 var loginRoutes = require('./routes/login');
 
 
@@ -29,8 +34,13 @@ mongoose.connection.openUri('mongodb://localhost:27017/hospitalDB', (err, res)=>
 
 // Rutas
 app.use('/usuario', usuarioRoutes);
-app.use('/', appRoutes);
+app.use('/hospital', hospitalRoutes);
 app.use('/login', loginRoutes);
+app.use('/medico', medicoRoutes);
+app.use('/busqueda', busquedaRoutes);
+app.use('/upload', uploadRoutes);
+app.use('/img', imagenesdRoutes);
+app.use('/', appRoutes);
 
 // Escuchar peticiones
 app.listen(3000, () =>{
